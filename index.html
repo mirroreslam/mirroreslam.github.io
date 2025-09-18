@@ -94,10 +94,10 @@
           <div class="content has-text-justified">
             <p>
               Mirrors are common in indoor environments. However, they reduce the accuracy of both localization and mapping of RGB-D SLAM systems, due to incorrect depth measurements from infrared sensors caused by multipath interference.
-              Yet, mirror-aware SLAM has received limited research attention. To the best of our knowledge, our proposal, named MirrorESLAM, is the first RGB-D dense SLAM method, designed for environments containing mirrors.
+              Yet, mirror-aware SLAM has received limited research attention. To the best of our knowledge, our proposal, named MirrorESLAM, is the first adaptation of and RGB-D dense SLAM method, designed for environments containing mirrors.
               Our approach builds upon ESLAM, a NeRF-based dense RGB-D SLAM framework, by integrating DepthMirrorNet, a CNN encoder-decoder trained on our custom DepthMirror Dataset. Within DepthMirrorNet, a dedicated segmentation module identifies reflective regions affected by multipath interference, enabling the generation of filtered depth maps. These maps are then used in the SLAM pipeline for improved reconstruction.
               We show through experiments that our proposed approach improves localization accuracy and mapping quality by reconstructing the correct 3D mirror geometry.
-              Experiments on the ScanNet dataset demonstrate significant improvements in localization and reconstruction metrics over the ESLAM baseline.
+              Experiments on the ScanNet and MirrEnv datasets demonstrate significant improvements in localization and reconstruction metrics over the ESLAM baseline.
             </p>
           </div>
         </div>
