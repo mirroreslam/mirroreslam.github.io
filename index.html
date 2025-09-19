@@ -39,6 +39,12 @@
 </head>
 <body>
 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -93,11 +99,7 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>
-              Mirrors are common in indoor environments. However, they reduce the accuracy of both localization and mapping of RGB-D SLAM systems, due to incorrect depth measurements from infrared sensors caused by multipath interference.
-              Yet, mirror-aware SLAM has received limited research attention. To the best of our knowledge, our proposal, named MirrorESLAM, is the first adaptation of and RGB-D dense SLAM method, designed for environments containing mirrors.
-              Our approach builds upon ESLAM, a NeRF-based dense RGB-D SLAM framework, by integrating DepthMirrorNet, a CNN encoder-decoder trained on our custom DepthMirror Dataset. Within DepthMirrorNet, a dedicated segmentation module identifies reflective regions affected by multipath interference, enabling the generation of filtered depth maps. These maps are then used in the SLAM pipeline for improved reconstruction.
-              We show through experiments that our proposed approach improves localization accuracy and mapping quality by reconstructing the correct 3D mirror geometry.
-              Experiments on the ScanNet and MirrEnv datasets demonstrate significant improvements in localization and reconstruction metrics over the ESLAM baseline.
+              Mirrors are common in indoor environments. However, they reduce the accuracy of both localization and mapping of RGB-D SLAM systems, due to incorrect depth measurements from infrared sensors caused by multipath interference. Yet, mirror-aware SLAM has received limited research attention. To the best of our knowledge, our proposal, named MirrorESLAM, is the first adaptation of an RGB-D dense SLAM method, designed for environments containing mirrors. Our approach builds upon ESLAM, a NeRF-based dense RGB-D SLAM framework, by integrating DepthMirrorNet, a CNN encoder-decoder trained on our custom DepthMirror Dataset. Within DepthMirrorNet, a dedicated segmentation module identifies reflective regions affected by multipath interference, enabling the generation of filtered depth maps. These maps are then used in the SLAM pipeline for improved reconstruction. We show through experiments that our proposed approach improves localization accuracy and mapping quality by reconstructing the correct 3D mirror geometry. Experiments on ScanNet and MirrEnv datasets demonstrate significant improvements in localization and reconstruction metrics over the ESLAM baseline.
             </p>
           </div>
         </div>
@@ -131,12 +133,13 @@
       </figure>
       <div class="content mt-4">
         <p>
-          <strong>Architecture of DepthMirrorNet.</strong> The sensor depth map D is fed to a CNN Encoder-Decoder in order to predict a binary mirror
-          mask M detecting the mirror area with ghost values. Filling holes and dilation algorithms are used to obtain a final filtered mirror mask
-          M_filtered. The regions from the input depth map D and contained in M_filtered are set to zero. The ⊙ operator denotes a pixel-wise
-          multiplication between sensor depth map D and logical NOT of the binary mask M. During data collection, a manual check in performed
-          to classify the generated masks (correct or not) and select only the correct masks from the ones generated with Tukey's fences and MAD-
-          based Z-score algorithms.
+          <strong>Architecture of DepthMirrorNet.</strong> 
+The sensor depth map \(D\) is fed to a CNN Encoder-Decoder in order to predict a binary mirror mask \(M\) detecting the mirror area with ghost values. 
+Filling holes and dilation algorithms are used to obtain a final filtered mirror mask \(M_{filtered}\). 
+The regions from the input depth map \(D\) and contained in \(M_{filtered}\) are set to zero.
+The \(\odot\) operator denotes a pixel-wise multiplication between sensor depth map \(D\) and logical NOT of the binary mask \(\overline{M_{filtered}}\). 
+During data collection, a manual check is performed to classify the generated masks (correct or not) and select only the correct masks from the ones generated with Tukey's fences and MAD-based Z-score algorithms.
+
         </p>
       </div>
     </div>
